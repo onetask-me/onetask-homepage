@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import './prism.css';
+
+:root {
+	--foreground-rgb: 0, 0, 0;
+	--background-start-rgb: 214, 219, 220;
+	--background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--foreground-rgb: 255, 255, 255;
+		--background-start-rgb: 0, 0, 0;
+		--background-end-rgb: 0, 0, 0;
+	}
+}
+
+body {
+}
+
+@layer utilities {
+	.text-gradient {
+		background: linear-gradient(
+			to right bottom,
+			rgb(255, 255, 255) 30%,
+			rgba(255, 255, 255, 0.38)
+		);
+		background-clip: text;
+		color: transparent;
+	}
+}
+
+/* Clerk */
+.cl-cardBox {
+	@apply h-[408px] shadow-none border border-dashed border-neutral-600;
+}
+.cl-card {
+	@apply bg-neutral-900 shadow-none;
+}
+.cl-headerTitle {
+	@apply text-white;
+}
+.cl-button {
+	@apply !ring-1 !ring-neutral-600;
+}
+.cl-formFieldLabel {
+	@apply text-neutral-400;
+}
+.cl-formFieldInput {
+	@apply text-neutral-200 bg-neutral-900;
+}
+.cl-input {
+	@apply !ring-1 ring-neutral-600;
+}

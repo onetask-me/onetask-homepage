@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	article p {
+		@apply my-4 text-md text-primary dark:text-white;
+	}
+
+	article .anchor {
+		@apply absolute invisible no-underline;
+
+		margin-left: -1em;
+		padding-right: 0.5em;
+		width: 80%;
+		max-width: 700px;
+		cursor: pointer;
+	}
+
+	.anchor:hover {
+		@apply visible;
+	}
+
+	article {
+		@apply w-full text-xl tracking-normal leading-relaxed;
+	}
+
+	article a {
+		@apply transition-all decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+	}
+
+	article *:hover > .anchor {
+		@apply visible;
+	}
+
+	article pre {
+		@apply bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-900;
+	}
+
+	article code {
+		@apply px-1 rounded-lg;
+	}
+
+	article pre code {
+		@apply p-0;
+		border: initial;
+		line-height: 1.5;
+	}
+
+	article code span {
+		@apply font-medium;
+	}
+
+	article img {
+		/* Don't apply styles to next/image */
+		@apply m-0;
+	}
+
+	article a {
+		@apply underline decoration-white;
+	}
+
+	article a:hover {
+		@apply decoration-cyan-300 text-cyan-300;
+	}
+
+	h1,
+	h2,
+	h3 a {
+		@apply no-underline;
+	}
+
+	h1,
+	h2,
+	h3 a:hover {
+		@apply no-underline;
+	}
+
+	article h1 {
+		@apply font-extrabold text-5xl tracking-tight leading-snug;
+	}
+
+	article h2 {
+		@apply font-bold tracking-normal leading-normal mt-4 mb-0 text-3xl;
+	}
+
+	article h3 {
+		@apply font-bold tracking-normal leading-normal mt-16 mb-0 text-2xl;
+	}
+
+	article h4 {
+		@apply font-bold tracking-normal leading-normal mt-2 mb-0 text-xl;
+	}
+
+	article ul {
+		@apply list-disc list-inside text-md leading-normal my-2;
+	}
+
+	article li {
+		@apply text-md leading-normal my-2;
+	}
+
+	article strong {
+		@apply font-medium;
+	}
+
+	article > :first-child {
+		/* Override removing top margin, causing layout shift */
+		margin-top: 1.25em;
+		margin-bottom: 1.25em;
+	}
+
+	pre::-webkit-scrollbar {
+		display: none;
+	}
+
+	pre {
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
+	}
+
+	/* Remove Safari input shadow on mobile */
+	input[type='text'],
+	input[type='email'] {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+	}
+
+	table {
+		display: block;
+		max-width: fit-content;
+		overflow-x: auto;
+		white-space: nowrap;
+	}
+
+	article .callout > p {
+		margin: 0;
+	}
+
+	.title {
+		text-wrap: balance;
+	}
+}
+
+@layer utilities {
+	.text-gradient {
+		background: linear-gradient(
+			to right bottom,
+			rgb(255, 255, 255) 30%,
+			rgba(255, 255, 255, 0.38)
+		);
+		background-clip: text;
+		color: transparent;
+	}
+
+	.mask-keyboard {
+		mask-image: linear-gradient(
+			transparent 0%,
+			rgba(0, 0, 0, 0.57) 33.98%,
+			black 100%
+		);
+	}
+
+	.mask-linear-faded {
+		mask-image: linear-gradient(black, transparent 70%);
+	}
+
+	.mask-radial-faded {
+		mask-image: radial-gradient(
+			circle at center center,
+			black,
+			transparent 80%
+		);
+	}
+
+	.mask-shortcutkeys {
+		mask-image: linear-gradient(
+			to right,
+			transparent,
+			black 40%,
+			black calc(60%),
+			transparent 100%
+		);
+	}
+
+	.text-shadow {
+		text-shadow: rgb(0 0 0 / 56%) 0px 3px 12px;
+	}
+}
