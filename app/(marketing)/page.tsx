@@ -1,13 +1,13 @@
-import { BlurImage } from "@/components/blur-image";
-import { Container } from "@/components/container";
-import { CTA } from "@/components/cta";
-import { Hero } from "@/components/hero";
-import { HeroHighlight } from "@/components/hero-highlight";
-import { HeroSubtasks } from "@/components/hero-subtasks";
-import { HeroTarget } from "@/components/hero-target";
-import { Testimonials } from "@/components/testimonials";
-import { Highlight } from "@/components/ui/hero-highlight";
-import { ContainerScroll } from "@/components/ui/scroll-animation";
+import { BlurImage } from '@/components/blur-image';
+import { Container } from '@/components/container';
+import { CTA } from '@/components/cta';
+import { Hero } from '@/components/hero';
+import { HeroHighlight } from '@/components/hero-highlight';
+import { HeroSubtasks } from '@/components/hero-subtasks';
+import { HeroTarget } from '@/components/hero-target';
+import { Testimonials } from '@/components/testimonials';
+import { Highlight } from '@/components/ui/hero-highlight';
+import { ContainerScroll } from '@/components/ui/scroll-animation';
 
 export default function Home() {
   return (
@@ -22,13 +22,13 @@ export default function Home() {
             <>
               Overwhelmed?
               <br />
-              Complete{" "}
+              Complete{' '}
               <Highlight
                 className="text-white from-green-400 via-blue-500 to-indigo-600"
                 delay={0.5}
               >
                 one task
-              </Highlight>{" "}
+              </Highlight>{' '}
               <Highlight delay={1}>at a time.</Highlight>
             </>
           }
@@ -47,7 +47,7 @@ export default function Home() {
         <ContainerScroll
           header={
             <>
-              A to-do app that gives you{" "}
+              A to-do app that gives you{' '}
               <Highlight
                 className="text-white from-fuchsia-500 via-pink-500 to-purple-600"
                 delay={0.5}
