@@ -30,7 +30,7 @@ export default function RootLayout({
         <body
           className={cn(
             GeistSans.className,
-            'bg-background antialiased h-full w-full',
+            'bg-white dark:bg-black antialiased h-full w-full',
           )}
         >
           <ThemeProvider

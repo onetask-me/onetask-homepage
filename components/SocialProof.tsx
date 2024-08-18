@@ -36,7 +36,7 @@ const SocialProof: FC<PropsWithChildren<SocialProofProps>> = ({
                 width={34}
                 height={34}
                 alt="Happy customer"
-                className="rounded-full shadow drop-shadow-md hover:-translate-y-1 hover:scale-105 transition-all border-2 border-background"
+                className="rounded-full shadow drop-shadow-md hover:-translate-y-1 hover:scale-105 transition-all border-2 border-[#F3F3F6] dark:border-black"
               />
             );
           })}

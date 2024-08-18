@@ -8,12 +8,14 @@ import { Subheading } from './subheading';
 
 export const Testimonials = () => {
   return (
-    <div className="relative z-20">
-      <Heading as="h2">Loved by people from all over the universe</Heading>
+    <div className="relative z-20 grid gap-6">
+      <div>
+        <Heading as="h2">Loved by people from all over the universe</Heading>
 
-      <Subheading className="text-center max-w-lg mx-auto">
-        But by Earthlings in particular.
-      </Subheading>
+        <Subheading className="text-center max-w-lg mx-auto">
+          But by Earthlings in particular.
+        </Subheading>
+      </div>
 
       <TestimonialGrid />
     </div>
@@ -88,7 +90,7 @@ const Testimonial = ({
 }) => (
   <div
     className={cn(
-      'relative grid gap-6 bg-white dark:bg-muted p-6 rounded-2xl text-xl',
+      'relative grid gap-6 bg-[#F3F3F6] dark:bg-muted p-6 rounded-2xl text-xl',
       className,
     )}
   >
@@ -101,7 +103,7 @@ const Testimonial = ({
 const TestimonialGrid = () => (
   <div className="text-2xl font-normal grid grid-cols-12 gap-4">
     <Testimonial
-      className="md:col-start-2 col-span-5"
+      className="md:col-start-2 col-span-12 md:col-span-5"
       photo="/testimonial-1.jpg"
       profession="Software developer"
       quote={
@@ -116,7 +118,7 @@ const TestimonialGrid = () => (
     />
 
     <Testimonial
-      className="col-span-5"
+      className="col-span-12 md:col-span-5"
       photo="/testimonial-3.jpg"
       profession="Author"
       quote={
@@ -133,7 +135,7 @@ const TestimonialGrid = () => (
     />
 
     <Testimonial
-      className="md:col-start-2 col-span-5"
+      className="md:col-start-2 col-span-12 md:col-span-5"
       photo="/testimonial-4.jpg"
       profession="Author"
       quote={
@@ -147,7 +149,7 @@ const TestimonialGrid = () => (
     />
 
     <Testimonial
-      className="col-span-5"
+      className="col-span-12 md:col-span-5"
       photo="/testimonial-2.jpg"
       profession="Coach"
       quote={

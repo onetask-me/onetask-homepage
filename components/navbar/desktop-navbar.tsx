@@ -18,12 +18,12 @@ export const DesktopNavbar = () => {
         'w-full flex relative justify-between px-4 py-2 rounded-full bg-transparent transition duration-200',
       )}
     >
-      <div className="flex flex-row gap-2 items-center bg-black dark:bg-black rounded-full">
+      <div className="flex flex-row gap-2 items-center rounded-full">
         <Logo />
       </div>
 
       <nav className="hidden md:grid grid-flow-col gap-8 items-center">
-        {links.map(({ href, label, button }, index) => {
+        {links.map(({ href, label, button }) => {
           if (button) {
             return (
               <Link
