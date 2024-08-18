@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "next": "node ../../scripts/next/index.js",
+    "next": "next dev",
     "tailwind": "tailwindcss -i ./app/blog/styles/input.css -o ./app/blog/styles/output.css --watch"
   },
   "dependencies": {
@@ -41,6 +41,7 @@
     "next-themes": "^0.3.0",
     "next-view-transitions": "^0.2.0",
     "openai": "^4.52.7",
+    "prettier": "^3.3.3",
     "prismjs": "^1.29.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -62,10 +63,14 @@
     "@types/node": "^20.14.5",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^8.1.0",
+    "@typescript-eslint/parser": "^8.1.0",
     "autoprefixer": "^10.4.19",
     "dotenv": "^16.4.5",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "postcss": "^8.4.38",
     "shelljs": "^0.8.5",
     "tailwindcss": "^3.4.4",
