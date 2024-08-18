@@ -1,6 +1,8 @@
 'use client';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import SocialProof, { SocialProofProps } from '@/components/SocialProof';
+import CardsImage from '/public/cards.webp';
 
 const dir = '/';
 
@@ -26,7 +28,7 @@ export const HeroNew = () => {
           stars={5}
           people={images}
           message="Loved by Entrepreneurs from all over the world"
-          className="mt-8"
+          className="-mb-4"
         />
       ) : null}
       <h1 className="md:text-6xl text-4xl font-bold ">
@@ -41,6 +43,11 @@ export const HeroNew = () => {
           Join the waitlist
         </button>
       </div>
+      <Image
+        alt="Add alt text here"
+        src={CardsImage}
+        className="rounded-2xl border border-neutral-600"
+      />
     </motion.div>
   );
 };
