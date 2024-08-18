@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <ViewTransitions>
-      <html lang="en" className={cursive.variable}>
+      <html lang="en" className={cn(cursive.variable, 'scroll-smooth')}>
         <body
           className={cn(
             GeistSans.className,

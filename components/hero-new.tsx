@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import SocialProof, { SocialProofProps } from '@/components/SocialProof';
 import CardsImage from '/public/cards.webp';
 import { variants } from '@/lib/utils';
@@ -41,9 +42,12 @@ export const HeroNew = () => {
         problem agitation.
       </p>
       <div>
-        <button className="gap-x-2 content-center inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-bold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/80 h-16 px-8 text-xl drop-shadow">
+        <Link
+          href="/#signup"
+          className="gap-x-2 content-center inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-bold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/80 h-16 px-8 text-xl drop-shadow"
+        >
           Join the waitlist
-        </button>
+        </Link>
       </div>
       <Image
         alt="Add alt text here"
