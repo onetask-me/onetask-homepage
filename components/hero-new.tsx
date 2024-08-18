@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import SocialProof, { SocialProofProps } from '@/components/SocialProof';
 import CardsImage from '/public/cards.webp';
+import { variants } from '@/lib/utils';
 
 const dir = '/';
 
@@ -18,9 +19,10 @@ const images: SocialProofProps['people'] = [
 export const HeroNew = () => {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ ease: 'easeOut', duration: 0.5 }}
+      variants={variants}
+      initial="offscreen"
+      whileInView="onscreen"
+      viewport={{ once: true }}
       className="grid gap-10 pt-20 justify-items-center md:pt-40 relative text-balance text-center"
     >
       {images.length ? (
@@ -31,9 +33,9 @@ export const HeroNew = () => {
           className="-mb-4"
         />
       ) : null}
-      <h1 className="md:text-6xl text-4xl font-bold ">
+      <motion.h1 className="md:text-6xl text-4xl font-bold">
         The AI to-do app for people who think differently.
-      </h1>
+      </motion.h1>
       <p className="text-2xl text-neutral-400 max-w-[60ch] m-auto">
         Add a further problem agitation or benefit here that supports the main
         problem agitation.

@@ -1,29 +1,12 @@
 'use client';
 import Image from 'next/image';
-import { motion, Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Star } from 'lucide-react';
 import React from 'react';
-import { cn } from '@/lib/utils';
+import { cn, variants } from '@/lib/utils';
 
 import { Heading } from './heading';
 import { Subheading } from './subheading';
-
-const variants: Variants = {
-  offscreen: {
-    y: 20,
-    opacity: 0,
-  },
-  onscreen: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      delay: 0.15,
-      type: 'tween',
-      duration: 0.25,
-      ease: 'easeIn',
-    },
-  },
-};
 
 export const Testimonials = () => {
   return (
