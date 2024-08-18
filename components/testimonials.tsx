@@ -1,4 +1,6 @@
+'use client';
 import Image from 'next/image';
+import { motion, Variants } from 'framer-motion';
 import { Star } from 'lucide-react';
 import React from 'react';
 import { cn } from '@/lib/utils';
@@ -6,9 +8,32 @@ import { cn } from '@/lib/utils';
 import { Heading } from './heading';
 import { Subheading } from './subheading';
 
+const variants: Variants = {
+  offscreen: {
+    y: 20,
+    opacity: 0,
+  },
+  onscreen: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: 0.15,
+      type: 'tween',
+      duration: 0.25,
+      ease: 'easeIn',
+    },
+  },
+};
+
 export const Testimonials = () => {
   return (
-    <div className="relative z-20 grid gap-6">
+    <motion.div
+      variants={variants}
+      initial="offscreen"
+      whileInView="onscreen"
+      viewport={{ once: true }}
+      className="relative z-20 grid gap-6"
+    >
       <div>
         <Heading as="h2">Loved by people from all over the universe</Heading>
 
@@ -18,7 +43,7 @@ export const Testimonials = () => {
       </div>
 
       <TestimonialGrid />
-    </div>
+    </motion.div>
   );
 };
 
@@ -88,7 +113,11 @@ const Testimonial = ({
   quotee: string;
   className?: string;
 }) => (
-  <div
+  <motion.div
+    variants={variants}
+    initial="offscreen"
+    whileInView="onscreen"
+    viewport={{ once: true, amount: 0.5 }}
     className={cn(
       'relative grid gap-6 bg-[#F3F3F6] dark:bg-muted p-6 rounded-2xl text-xl',
       className,
@@ -97,7 +126,7 @@ const Testimonial = ({
     <div className="leading-tight text-muted-foreground">{quote}</div>
 
     <Avatar image={photo} name={quotee} profession={profession} />
-  </div>
+  </motion.div>
 );
 
 const TestimonialGrid = () => (
