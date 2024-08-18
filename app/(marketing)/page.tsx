@@ -1,19 +1,19 @@
 import { BlurImage } from '@/components/blur-image';
 import { Container } from '@/components/container';
 import { CTA } from '@/components/cta';
-import { Hero } from '@/components/hero';
 import { HeroHighlight } from '@/components/hero-highlight';
 import { HeroSubtasks } from '@/components/hero-subtasks';
 import { HeroTarget } from '@/components/hero-target';
 import { Testimonials } from '@/components/testimonials';
 import { Highlight } from '@/components/ui/hero-highlight';
 import { ContainerScroll } from '@/components/ui/scroll-animation';
+import { HeroNew } from '@/components/hero-new';
 
 export default function Home() {
   return (
     <div className="relative overflow-hidden antialiased">
       <Container className="flex min-h-screen flex-col items-center justify-between ">
-        <Hero />
+        <HeroNew />
 
         <HeroHighlight />
 
