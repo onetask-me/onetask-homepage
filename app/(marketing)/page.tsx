@@ -5,6 +5,7 @@ import { HeroNew } from '@/components/hero-new';
 import { LandingSection } from '@/components/landing-section';
 import CalendarImage from '/public/calendar.webp';
 import TodoImage from '/public/todolist.webp';
+import FAQs from '@/components/faqs';
 
 export default function Home() {
   return (
@@ -28,8 +29,8 @@ export default function Home() {
           staticImage={TodoImage}
           alt=""
         />
+        <FAQs />
       </Container>
-
       <CTA />
     </div>
   );

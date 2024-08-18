@@ -106,7 +106,9 @@ const Testimonial = ({
       className,
     )}
   >
-    <div className="leading-tight text-muted-foreground">{quote}</div>
+    <div className="leading-tight text-muted-foreground text-base md:text-xl">
+      {quote}
+    </div>
 
     <Avatar image={photo} name={quotee} profession={profession} />
   </motion.div>

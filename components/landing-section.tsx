@@ -27,7 +27,7 @@ export const LandingSection: React.FC<LandingSectionProps> = ({
     >
       <div className="grid col-span-12 md:col-start-2 md:col-end-12 gap-8">
         <div className="grid gap-4">
-          <p className="text-4xl font-bold">
+          <p className="text-2xl md:text-4xl font-bold">
             {heading.map((line, index) => (
               <React.Fragment key={index}>
                 {line}
@@ -35,7 +35,9 @@ export const LandingSection: React.FC<LandingSectionProps> = ({
               </React.Fragment>
             ))}
           </p>
-          <p className="text-xl text-neutral-400 max-w-[40ch]">{subheading}</p>
+          <p className="text-base md:text-xl text-neutral-400 max-w-[40ch]">
+            {subheading}
+          </p>
         </div>
         <Image
           src={staticImage}
