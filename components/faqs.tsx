@@ -1,36 +1,49 @@
-'use client';
-import React, { FC } from 'react';
+"use client";
+import { FC } from "react";
 
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/components/ui/accordion';
-import { Container } from '@/components/container';
+} from "@/components/ui/accordion";
 
 const FAQsData = [
   {
-    question: 'What do I get?',
-    answer: <p>Add some text here</p>,
-  },
-  {
-    question: 'What do I get if I pre-order?',
-    answer:
-      "Apart from an exclusive discount, you'll be one of the first to access OneTask when it's available, you'll get access for life including any new features and improvements.",
-  },
-  {
-    question: 'Can I get a refund?',
+    question: "How does the AI prioritize tasks?",
     answer: (
       <p>
-        Yes, you can request a refund within 7 days of your purchase. Email me{' '}
-        <a href="">here</a>
+        The AI uses a combination of deadlines, task importance, and your
+        personal preferences to prioritize tasks effectively.
       </p>
     ),
   },
   {
-    question: 'How do I get access?',
-    answer: 'Add answer here',
+    question: "Is my data secure?",
+    answer: (
+      <p>
+        Yes, we use industry-standard AES-256 bit encryption (both in transit
+        and at rest) to ensure your data is private and secure.
+      </p>
+    ),
+  },
+  {
+    question: "Can I customize the task categories?",
+    answer: (
+      <p>
+        Yes, you can create and customize task categories to suit your workflow
+        and preferences.
+      </p>
+    ),
+  },
+  {
+    question: "Can I integrate the app with other tools?",
+    answer: (
+      <p>
+        Yes, our app supports integration with Google Calendar, with additional
+        integrations coming soon.
+      </p>
+    ),
   },
 ];
 
@@ -57,7 +70,7 @@ const FAQs: FC = () => {
                   {item.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-base md:text-xl bodyContent">
-                  <div className="[max-width:80ch] [text-wrap:balance] text-muted-foreground text-fluid-sm/[1.3]">
+                  <div className="text-muted-foreground text-fluid-sm/[1.3]">
                     {item.answer}
                   </div>
                 </AccordionContent>

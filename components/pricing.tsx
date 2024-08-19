@@ -1,134 +1,201 @@
-'use client'
+"use client";
+import { cn } from "@/lib/utils";
+import { useState } from "react";
 
-import { tiers } from '@/constants/tier'
-import { cn } from '@/lib/utils'
-import { IconCircleCheckFilled } from '@tabler/icons-react'
-import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { CheckIcon } from "@/components/icons/PricingCheckIcon";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import {
+  pricingFrequencies as frequencies,
+  pricingTiers as tiers,
+} from "@/data/config/pricingData";
 
-import { Button } from './button'
+export const Pricing = () => {
+  const [frequency, setFrequency] = useState(frequencies[1]);
 
-export function Pricing() {
-	const [active, setActive] = useState('monthly')
-	const tabs = [
-		{ name: 'Monthly', value: 'monthly' },
-		{ name: 'Yearly', value: 'yearly' }
-	]
+  const bannerText = "";
 
-	return (
-		<div className='relative'>
-			<div className='flex items-center justify-center bg-neutral-100 dark:bg-neutral-800  w-fit mx-auto mb-12 rounded-md overflow-hidden'>
-				{tabs.map(tab => (
-					<button
-						key={tab.value}
-						className={cn(
-							'text-sm font-medium text-gray-500 dark:text-muted-dark p-4  rounded-md relative',
-							active === tab.value ? ' text-white dark:text-black' : ''
-						)}
-						onClick={() => setActive(tab.value)}
-					>
-						{active === tab.value && (
-							<motion.span
-								layoutId='moving-div'
-								transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
-								className='absolute inset-0 bg-black dark:bg-white'
-							/>
-						)}
-						<span className='relative z-10'>{tab.name}</span>
-					</button>
-				))}
-			</div>
-			<div className='mx-auto mt-4 md:mt-20   grid relative z-20 grid-cols-1 gap-4 items-center  md:grid-cols-2 xl:grid-cols-4'>
-				{tiers.map(tier => (
-					<div
-						key={tier.id}
-						className={cn(
-							tier.featured
-								? 'relative bg-[radial-gradient(164.75%_100%_at_50%_0%,#334155_0%,#0F172A_48.73%)]  shadow-2xl'
-								: ' bg-white dark:bg-black',
-							'rounded-lg px-6 py-8 sm:mx-8 lg:mx-0  h-full flex flex-col justify-between'
-						)}
-					>
-						<div className=''>
-							<h3
-								id={tier.id}
-								className={cn(
-									tier.featured
-										? 'text-white'
-										: 'text-muted dark:text-muted-dark',
-									'text-base font-semibold leading-7'
-								)}
-							>
-								{tier.name}
-							</h3>
-							<p className='mt-4'>
-								<motion.span
-									initial={{ x: -20, opacity: 0 }}
-									animate={{ x: 0, opacity: 1 }}
-									transition={{ duration: 0.2, ease: 'easeOut' }}
-									key={active}
-									className={cn(
-										'text-4xl font-bold tracking-tight  inline-block',
-										tier.featured
-											? 'text-white'
-											: 'text-neutral-900 dark:text-neutral-200'
-									)}
-								>
-									{active === 'monthly' ? tier.priceMonthly : tier.priceYearly}
-								</motion.span>
-							</p>
-							<p
-								className={cn(
-									tier.featured
-										? 'text-neutral-300'
-										: 'text-neutral-600 dark:text-neutral-300',
-									'mt-6 text-sm leading-7  h-12 md:h-12 xl:h-12'
-								)}
-							>
-								{tier.description}
-							</p>
-							<ul
-								role='list'
-								className={cn(
-									tier.featured
-										? 'text-neutral-300'
-										: 'text-neutral-600 dark:text-neutral-300',
-									'mt-8 space-y-3 text-sm leading-6 sm:mt-10'
-								)}
-							>
-								{tier.features.map(feature => (
-									<li key={feature} className='flex gap-x-3'>
-										<IconCircleCheckFilled
-											className={cn(
-												tier.featured
-													? 'text-white'
-													: 'text-muted dark:text-muted-dark',
-												'h-6 w-5 flex-none'
-											)}
-											aria-hidden='true'
-										/>
-										{feature}
-									</li>
-								))}
-							</ul>
-						</div>
-						<div>
-							<Button
-								onClick={tier.onClick}
-								aria-describedby={tier.id}
-								className={cn(
-									tier.featured
-										? 'bg-white text-black shadow-sm hover:bg-white/90 focus-visible:outline-white'
-										: '',
-									'mt-8 rounded-full py-2.5 px-3.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10 block w-full'
-								)}
-							>
-								{tier.cta}
-							</Button>
-						</div>
-					</div>
-				))}
-			</div>
-		</div>
-	)
-}
+  return (
+    <div className="w-full flex flex-col items-center">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 flex flex-col items-center">
+        <div className="w-full lg:w-auto mx-auto max-w-4xl lg:text-center">
+          <h1 className="text-4xl font-semibold leading-tight md:leading-tight max-w-xs sm:max-w-none md:text-6xl fancy-heading">
+            Pricing
+          </h1>
+
+          <p className="mt-6 md:text-xl lg:text-center max-w-prose">
+            Simple, yet straightforward.
+          </p>
+        </div>
+
+        {bannerText ? (
+          <div className="w-full lg:w-auto flex justify-center my-4">
+            <p className="w-full px-4 py-3 text-xs bg-purple-100 text-black dark:bg-purple-300/30 dark:text-white/80 rounded-xl">
+              {bannerText}
+            </p>
+          </div>
+        ) : null}
+
+        {frequencies.length > 1 ? (
+          <div className="mt-16 flex justify-center">
+            <RadioGroup
+              defaultValue={frequency.value}
+              onValueChange={(value: string) => {
+                setFrequency(frequencies.find((f) => f.value === value)!);
+              }}
+              className="grid gap-x-1 rounded-full p-1 text-center text-xs font-semibold leading-5 bg-white dark:bg-black ring-1 ring-inset ring-gray-200/30 dark:ring-gray-800"
+              style={{
+                gridTemplateColumns: `repeat(${frequencies.length}, minmax(0, 1fr))`,
+              }}
+            >
+              <p className="sr-only">Payment frequency</p>
+              {frequencies.map((option) => (
+                <Label
+                  className={cn(
+                    frequency.value === option.value
+                      ? "bg-purple-500/90 text-white dark:bg-purple-900/70 dark:text-white/70"
+                      : "bg-transparent text-gray-500 hover:bg-purple-500/10",
+                    "cursor-pointer rounded-full px-2.5 py-2 transition-all"
+                  )}
+                  key={option.value}
+                  htmlFor={option.value}
+                >
+                  {option.label}
+
+                  <RadioGroupItem
+                    value={option.value}
+                    id={option.value}
+                    className="hidden"
+                  />
+                </Label>
+              ))}
+            </RadioGroup>
+          </div>
+        ) : (
+          <div className="mt-12" aria-hidden="true"></div>
+        )}
+
+        <div
+          className={cn(
+            "isolate mx-auto mt-4 mb-28 grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none",
+            tiers.length === 2 ? "lg:grid-cols-2" : "",
+            tiers.length === 3 ? "lg:grid-cols-3" : ""
+          )}
+        >
+          {tiers.map((tier) => (
+            <div
+              key={tier.id}
+              className={cn(
+                tier.featured
+                  ? "!bg-gray-900 ring-gray-900 dark:!bg-gray-100 dark:ring-gray-100"
+                  : "bg-white dark:bg-gray-900/80 ring-gray-300/70 dark:ring-gray-700",
+                "max-w-xs ring-1 rounded-3xl p-8 xl:p-10",
+                tier.highlighted ? "fancy-glass-contrast" : ""
+              )}
+            >
+              <h3
+                id={tier.id}
+                className={cn(
+                  tier.featured ? "text-white dark:text-black" : "",
+                  "text-2xl font-bold tracking-tight"
+                )}
+              >
+                {tier.name}
+              </h3>
+              <p
+                className={cn(
+                  tier.featured
+                    ? "text-gray-300 dark:text-gray-500"
+                    : "text-gray-600 dark:text-gray-400",
+                  "mt-4 text-sm leading-6"
+                )}
+              >
+                {tier.description}
+              </p>
+              <p className="mt-6 flex items-baseline gap-x-1">
+                <span
+                  className={cn(
+                    tier.featured ? "text-white dark:text-black" : "",
+                    "text-4xl font-bold tracking-tight",
+                    tier.discountPrice && tier.discountPrice[frequency.value]
+                      ? "line-through"
+                      : ""
+                  )}
+                >
+                  {typeof tier.price === "string"
+                    ? tier.price
+                    : tier.price[frequency.value]}
+                </span>
+
+                <span
+                  className={cn(
+                    tier.featured ? "text-white dark:text-black" : ""
+                  )}
+                >
+                  {typeof tier.discountPrice === "string"
+                    ? tier.discountPrice
+                    : tier.discountPrice[frequency.value]}
+                </span>
+
+                {typeof tier.price !== "string" ? (
+                  <span
+                    className={cn(
+                      tier.featured
+                        ? "text-gray-300 dark:text-gray-500"
+                        : "dark:text-gray-400 text-gray-600",
+                      "text-sm font-semibold leading-6"
+                    )}
+                  >
+                    {frequency.priceSuffix}
+                  </span>
+                ) : null}
+              </p>
+              <a
+                href={tier.href}
+                aria-describedby={tier.id}
+                className={cn(
+                  "flex mt-6 shadow-sm",
+                  tier.soldOut ? "pointer-events-none" : ""
+                )}
+              >
+                <Button
+                  size="lg"
+                  disabled={tier.soldOut}
+                  className={cn("w-full", "bg-gray-100 dark:bg-gray-600")}
+                  variant={"secondary"}
+                >
+                  {tier.soldOut ? "Sold out" : tier.cta}
+                </Button>
+              </a>
+
+              <ul
+                className={cn(
+                  tier.featured
+                    ? "text-gray-300 dark:text-gray-500"
+                    : "text-gray-700 dark:text-gray-400",
+                  "mt-8 space-y-3 text-sm leading-6 xl:mt-10"
+                )}
+              >
+                {tier.features.map((feature) => (
+                  <li key={feature} className="flex gap-x-3">
+                    <CheckIcon
+                      className={cn(
+                        tier.featured ? "text-white dark:text-black" : "",
+                        tier.highlighted ? "text-purple-500" : "text-gray-500",
+
+                        "h-6 w-5 flex-none"
+                      )}
+                      aria-hidden="true"
+                    />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};

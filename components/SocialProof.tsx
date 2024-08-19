@@ -1,7 +1,7 @@
-import React, { FC, PropsWithChildren } from 'react';
-import Image from 'next/image';
-import clsx from 'clsx';
-import { Star } from 'lucide-react';
+import clsx from "clsx";
+import { Star } from "lucide-react";
+import Image from "next/image";
+import { FC, PropsWithChildren } from "react";
 
 export interface SocialProofProps {
   people: Array<{ imgSrc: string }>;
@@ -23,8 +23,8 @@ const SocialProof: FC<PropsWithChildren<SocialProofProps>> = ({
     <div className="@container">
       <div
         className={clsx(
-          'grid items-center justify-items-center justify-center gap-1',
-          className,
+          "grid items-center justify-items-center justify-center gap-1",
+          className
         )}
       >
         <div className="flex [&>:not(:first-child)]:-ml-3">
@@ -47,6 +47,7 @@ const SocialProof: FC<PropsWithChildren<SocialProofProps>> = ({
             <p className="text-xs text-balance max-w-[40ch]">{message}</p>
           ) : null}
         </div>
+
         <div className="flex gap-0.5 m-auto">
           {Array.from(Array(stars)).map((_, index) => (
             <Star

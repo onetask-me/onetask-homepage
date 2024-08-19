@@ -1,12 +1,11 @@
-'use client';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { Star } from 'lucide-react';
-import React from 'react';
-import { cn, variants } from '@/lib/utils';
+"use client";
+import { cn, variants } from "@/lib/utils";
+import { motion } from "framer-motion";
+import { Star } from "lucide-react";
+import Image from "next/image";
+import React from "react";
 
-import { Heading } from './heading';
-import { Subheading } from './subheading';
+import { Heading } from "./heading";
 
 export const Testimonials = () => {
   return (
@@ -17,13 +16,7 @@ export const Testimonials = () => {
       viewport={{ once: true }}
       className="relative z-20 grid gap-6"
     >
-      <div>
-        <Heading as="h2">Loved by people from all over the universe</Heading>
-
-        <Subheading className="text-center max-w-lg mx-auto">
-          But by Earthlings in particular.
-        </Subheading>
-      </div>
+      <Heading as="h2">Loved by people from all over</Heading>
 
       <TestimonialGrid />
     </motion.div>
@@ -74,15 +67,16 @@ const Mark = ({
   className?: string;
   children: React.ReactNode;
 }) => (
-  <mark
+  <span
     className={cn(
-      'dark:text-muted-foreground px-2 py-0.5 mx-0.5 dark:p-0 dark:m-0 rounded-lg bg-[#F3FBA1] dark:bg-transparent',
-      className,
+      "px-2 py-0.5 mx-0.5 font-medium rounded-lg text-white bg-gradient-to-br",
+      className
     )}
   >
     {children}
-  </mark>
+  </span>
 );
+
 const Testimonial = ({
   photo,
   profession,
@@ -102,8 +96,8 @@ const Testimonial = ({
     whileInView="onscreen"
     viewport={{ once: true, amount: 0.5 }}
     className={cn(
-      'relative grid gap-6 bg-[#F3F3F6] dark:bg-muted p-6 rounded-2xl text-xl',
-      className,
+      "relative grid gap-6 bg-[#F3F3F6] dark:bg-muted p-6 rounded-2xl text-xl",
+      className
     )}
   >
     <div className="leading-tight text-muted-foreground text-base md:text-xl">
@@ -115,17 +109,19 @@ const Testimonial = ({
 );
 
 const TestimonialGrid = () => (
-  <div className="text-2xl font-normal grid grid-cols-12 gap-4">
+  <div className="text-2xl font-normal grid grid-cols-12 gap-8">
     <Testimonial
       className="md:col-start-2 col-span-12 md:col-span-5"
       photo="/testimonial-1.jpg"
       profession="Software developer"
       quote={
         <>
-          The first task list that has truly excited me. I get a{' '}
-          <Mark>huge sense of satisfaction</Mark> using this app, and it is
-          amazing at how well it helps me to prioritize my tasks. Absolutely
-          revolutionary.
+          The first task list that has truly excited me. I get a{" "}
+          <Mark className="from-fuchsia-500 via-pink-500 to-purple-600">
+            huge sense of satisfaction
+          </Mark>{" "}
+          using this app, and it is amazing at how well it helps me to
+          prioritize my tasks. Absolutely revolutionary.
         </>
       }
       quotee="Anthony McGrath"
@@ -138,10 +134,10 @@ const TestimonialGrid = () => (
       quote={
         <>
           As a creative, I need tools to help me to know what to prioritize. The
-          app helps me a lot with its clean user interface and the app does some{' '}
-          <Mark className="from-fuchsia-500 via-pink-500 to-purple-600">
+          app helps me a lot with its clean user interface and the app does some{" "}
+          <Mark className="from-blue-500 via-green-500 to-yellow-500">
             incredibly magic calculations
-          </Mark>{' '}
+          </Mark>{" "}
           to show me my most important tasks.
         </>
       }
@@ -151,12 +147,17 @@ const TestimonialGrid = () => (
     <Testimonial
       className="md:col-start-2 col-span-12 md:col-span-5"
       photo="/testimonial-4.jpg"
-      profession="Author"
+      profession="Marketing Exec"
       quote={
         <>
-          Like <Mark>Notion for tasks</Mark> and incredibly helpful. A
-          game-changer...
-          <Mark>a life-changer!</Mark>
+          Like{" "}
+          <Mark className="from-green-400 via-blue-500 to-purple-600 bg-gradient-to-r">
+            Notion for tasks
+          </Mark>{" "}
+          and incredibly helpful. A game-changer...
+          <Mark className="from-blue-500 via-green-500 to-yellow-500 bg-gradient-to-r">
+            a life-changer!
+          </Mark>
         </>
       }
       quotee="Rizala Carrington"
@@ -168,7 +169,11 @@ const TestimonialGrid = () => (
       profession="Coach"
       quote={
         <>
-          I’ll finally use a <Mark>to-do app</Mark> 🎉
+          I’ll finally use a{" "}
+          <Mark className="from-fuchsia-500 via-pink-500 to-purple-600 bg-gradient-to-r">
+            to-do app
+          </Mark>{" "}
+          🎉
         </>
       }
       quotee="Diane MalletteBiz"

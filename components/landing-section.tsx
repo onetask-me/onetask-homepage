@@ -1,22 +1,27 @@
-'use client';
-import React from 'react';
-import Image, { StaticImageData } from 'next/image';
-import { motion } from 'framer-motion';
-import { variants } from '@/lib/utils';
+"use client";
+import { variants } from "@/lib/utils";
+import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
+import Image, { StaticImageData } from "next/image";
+import React from "react";
 
 interface LandingSectionProps {
-  heading: string[];
   subheading: string;
-  staticImage: StaticImageData;
+  staticImageLight: StaticImageData;
+  staticImageDark: StaticImageData;
+  title?: React.ReactNode;
   alt: string;
 }
 
 export const LandingSection: React.FC<LandingSectionProps> = ({
-  heading,
   subheading,
-  staticImage,
+  staticImageLight,
+  staticImageDark,
+  title,
   alt,
 }) => {
+  const { theme } = useTheme();
+
   return (
     <motion.div
       variants={variants}
@@ -26,23 +31,16 @@ export const LandingSection: React.FC<LandingSectionProps> = ({
       className="grid grid-cols-12"
     >
       <div className="grid col-span-12 md:col-start-2 md:col-end-12 gap-8">
-        <div className="grid gap-4">
-          <p className="text-2xl md:text-4xl font-bold">
-            {heading.map((line, index) => (
-              <React.Fragment key={index}>
-                {line}
-                {index < heading.length - 1 && <br />}
-              </React.Fragment>
-            ))}
-          </p>
-          <p className="text-base md:text-xl text-neutral-400 max-w-[40ch]">
-            {subheading}
-          </p>
-        </div>
+        <p className="text-2xl md:text-4xl font-bold">{title}</p>
+
+        <p className="text-base md:text-xl text-neutral-400 max-w-4xl">
+          {subheading}
+        </p>
+
         <Image
-          src={staticImage}
+          src={theme === "light" ? staticImageLight : staticImageDark}
           alt={alt}
-          className="rounded-2xl border border-neutral-600"
+          className="rounded-2xl border border-border/20"
         />
       </div>
     </motion.div>

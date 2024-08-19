@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
-import { DesktopNavbar } from './desktop-navbar';
-import { MobileNavbar } from './mobile-navbar';
+import { DesktopNavbar } from "./desktop-navbar";
+import { MobileNavbar } from "./mobile-navbar";
 
 export function NavBar() {
   return (
@@ -29,13 +29,4 @@ export function NavBar() {
       </div>
     </motion.nav>
   );
-}
-
-{
-  /* <div className="hidden md:block ">
-        <DesktopNavbar />
-      </div>
-      <div className="flex h-full w-full items-center md:hidden ">
-        <MobileNavbar navItems={navItems} />
-      </div> */
 }
