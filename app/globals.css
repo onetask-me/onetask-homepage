@@ -4,16 +4,24 @@
 @import './prism.css';
 
 :root {
-	--foreground-rgb: 0, 0, 0;
-	--background-start-rgb: 214, 219, 220;
-	--background-end-rgb: 255, 255, 255;
+	--border: 211 211 211;
+	--background: 243 243 243;
+	--foreground: 0 0 0;
+	--primary: 109 40 217;
+	--primary-foreground: 255 255 255;
+	--muted: 243 243 246;
+	--muted-foreground: 110 110 110;
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--foreground-rgb: 255, 255, 255;
+		--border: 50 50 50;
+		--background: 0 0 0;
+		--foreground: 243 243 243;
 		--background-start-rgb: 0, 0, 0;
 		--background-end-rgb: 0, 0, 0;
+		--muted: 21 21 21;
+		--muted-foreground: 173 173 173;
 	}
 }
 
@@ -31,6 +39,13 @@ body {
 		color: transparent;
 	}
 }
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+}
+
 
 /* Clerk */
 .cl-cardBox {

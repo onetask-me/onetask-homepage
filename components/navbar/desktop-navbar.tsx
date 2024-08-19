@@ -1,61 +1,72 @@
-'use client'
+'use client';
 
-import { cn } from '@/lib/utils'
-import {
-	AnimatePresence,
-	motion,
-	useMotionValueEvent,
-	useScroll
-} from 'framer-motion'
-import { useState } from 'react'
-
-import { Logo } from '../Logo'
-import { ModeToggle } from '../mode-toggle'
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { clsx } from 'clsx';
+import { usePathname } from 'next/navigation';
+import { cn, isPathActive } from '@/lib/utils';
+import { links } from '@/data/links';
+import { Logo } from '../Logo';
+import { ModeToggle } from '../mode-toggle';
 
 export const DesktopNavbar = () => {
-	const { scrollY } = useScroll()
+  const pathname = usePathname();
 
-	const [showBackground, setShowBackground] = useState(false)
+  return (
+    <div
+      className={cn(
+        'w-full flex relative justify-between px-4 py-2 rounded-full bg-transparent transition duration-200',
+      )}
+    >
+      <div className="flex flex-row gap-2 items-center rounded-full">
+        <Logo />
+      </div>
 
-	useMotionValueEvent(scrollY, 'change', value => {
-		if (value > 100) {
-			setShowBackground(true)
-		} else {
-			setShowBackground(false)
-		}
-	})
-	return (
-		<div
-			className={cn(
-				'w-full flex relative justify-between px-4 py-2 rounded-full bg-transparent transition duration-200'
-			)}
-		>
-			<div className='flex flex-row gap-2 items-center bg-black dark:bg-black rounded-full'>
-				<Logo />
-			</div>
-
-			<AnimatePresence>
-				{showBackground && (
-					<motion.div
-						key={String(showBackground)}
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						transition={{ duration: 1 }}
-						className='bg-neutral-100 dark:bg-black rounded-full flex space-x-2 items-center' // TODO: Add `px-1` once login is activated
-					>
-						<ModeToggle />
-
-						{/* TODO: activate login
-						<Button as={Link} variant='simple' href='/signin'>
-							Login
-						</Button>
-
-						<Button as={Link} href='/signup'>
-							Sign Up
-						</Button> */}
-					</motion.div>
-				)}
-			</AnimatePresence>
-		</div>
-	)
-}
+      <nav className="hidden md:grid grid-flow-col gap-8 items-center">
+        {links.map(({ href, label, button }) => {
+          if (button) {
+            return (
+              <Link
+                key={href}
+                href={href}
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-bold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/80 h-8 px-3"
+              >
+                {label}
+              </Link>
+            );
+          }
+          return (
+            <Link
+              className={clsx(
+                'font-bold relative hover:text-foreground transition-all text-sm',
+                {
+                  'text-foreground': isPathActive(pathname, href),
+                  'text-muted-foreground': !isPathActive(pathname, href),
+                },
+              )}
+              href={href}
+              key={href}
+            >
+              {label}
+              {isPathActive(pathname, href) ? (
+                <motion.span
+                  animate={{
+                    scale: 1.1,
+                  }}
+                  transition={{
+                    type: 'spring',
+                    bounce: 0.2,
+                    duration: 0.6,
+                  }}
+                  layoutId="underline"
+                  className="absolute left-0 right-0 block h-[0.0625rem] -bottom-2 bg-primary will-change-transform"
+                />
+              ) : null}
+            </Link>
+          );
+        })}
+        <ModeToggle />
+      </nav>
+    </div>
+  );
+};
